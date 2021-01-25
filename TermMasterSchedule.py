@@ -1,27 +1,11 @@
 
-import requests
-import lxml
-from bs4 import BeautifulSoup
-import datetime
+from selenium import webdriver
+import re
 
 HomePage = "https://termmasterschedule.drexel.edu/webtms_du/app"
-TodaysDate = datetime.date.today()
-
-Seasons = ["Fall", "Winter", "Spring", "Summer"]
-Year = 21
-TermLength = "Quarter" # or "Semester"
-Links = ["{0} {1} {2}-{3}".format(season, TermLength, Year-1, Year) for season in Seasons] + ["{0} {1} {2}-{3}".format(season, TermLength, Year-2, Year-1) for season in Seasons]
-
-College = "Col of Computing & Informatics"
-Majors = ["Computer Science (CS)",
-          "Software Engineering (SE)"]
-
-# Get rows by whether the elements are of class "even" or "odd" (table has alternating colors)
-
-# Just compile a list of course numbers and titles I guess
 
 # Functions
-def get_term_schedule(term:str = "Fall Quarter 20-21", college:str = "Col of Computing & Informatics", major:str = "Computer Science (CS)") -> list:
+def get_term_schedule(term:str, college:str, major:str) -> list:
     driver = webdriver.Chrome()
     driver.get(HomePage)
     # Navigate to the term page
@@ -35,6 +19,11 @@ def get_term_schedule(term:str = "Fall Quarter 20-21", college:str = "Col of Com
     elem.click()
 
     # driver now holds the page with the term master schedule
-    # The information is in a table with alternating row colors
-    rows_elems = driver.find_elements_by_class_name("even") + driver.find_elements_by_class_name("odd")
+    xpath_to_course_table = "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[6]/td/table/tbody" # its also possible to just get the text from the whole table...
+    total_rows = len(driver.find_elements_by_xpath(xpath_to_course_table + "/tr")) - 2 # for the header and footer
+    col_count = 9 # just the td conut per row
 
+    # love me some one-liners
+    table = [[driver.find_element_by_xpath(xpath_to_course_table + "/tr[{0}]".format(2+n) + "/td[{0}]".format(c)).text for c in range(1, col_count+1)] for n in range(total_rows)]
+
+    return table
