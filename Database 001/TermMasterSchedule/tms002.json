@@ -1,0 +1,557 @@
+{
+    "CS 150": {
+        "Lab 862": {
+            "style": "Remote Synchronous",
+            "time": "F 01:00 pm - 02:50 pm",
+            "professor": "Jeffrey L Popyack"
+        },
+        "Lecture A": {
+            "style": "Remote Synchronous",
+            "time": "M 04:00 pm - 05:50 pm\nDec 09, 2020 Final Exam:\n03:30 pm - 05:30 pm",
+            "professor": "Jeffrey L Popyack"
+        }
+    },
+    "CS 164": {
+        "Lab 860": {
+            "style": "Remote Synchronous",
+            "time": "W 09:00 am - 10:50 am",
+            "professor": "Brian L Stuart"
+        },
+        "Lab 862": {
+            "style": "Remote Synchronous",
+            "time": "W 12:30 pm - 02:20 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lab 865": {
+            "style": "Remote Synchronous",
+            "time": "R 04:00 pm - 05:50 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lab 866": {
+            "style": "Remote Synchronous",
+            "time": "R 09:00 am - 10:50 am",
+            "professor": "Brian L Stuart"
+        },
+        "Lab 872": {
+            "style": "Remote Synchronous",
+            "time": "F 12:30 pm - 02:20 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lecture A": {
+            "style": "Remote Synchronous",
+            "time": "M 12:00 pm - 01:50 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lecture B": {
+            "style": "Remote Synchronous",
+            "time": "T 01:00 pm - 02:50 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lecture C": {
+            "style": "Remote Synchronous",
+            "time": "T 04:00 pm - 05:50 pm",
+            "professor": "Brian L Stuart"
+        }
+    },
+    "CS 171": {
+        "Lab 060": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick, Adelaida A Medlock"
+        },
+        "Lab 062": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick, Adelaida A Medlock"
+        },
+        "Lab 063": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick, Adelaida A Medlock"
+        },
+        "Lab 064": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick, Adelaida A Medlock"
+        },
+        "Lab 065": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick, Adelaida A Medlock"
+        },
+        "Lab 069": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick, Adelaida A Medlock"
+        },
+        "Lecture A": {
+            "style": "Remote Synchronous",
+            "time": "T 01:00 pm - 02:50 pm\nDec 11, 2020 Final Exam:\n08:00 am - 10:00 am",
+            "professor": "Adelaida A Medlock"
+        },
+        "Lecture B": {
+            "style": "Remote Synchronous",
+            "time": "M 01:00 pm - 02:50 pm\nDec 11, 2020 Final Exam:\n08:00 am - 10:00 am",
+            "professor": "Dave H Augenblick"
+        }
+    },
+    "CS 172": {
+        "Lab 060": {
+            "style": "Remote Asynchronous",
+            "time": "TBD TBD",
+            "professor": "Dave H Augenblick"
+        },
+        "Lecture A": {
+            "style": "Remote Synchronous",
+            "time": "M 09:00 am - 10:50 am",
+            "professor": "Dave H Augenblick"
+        }
+    },
+    "CS 265": {
+        "Lecture & Lab 001": {
+            "style": "Remote Synchronous",
+            "time": "MWF 01:00 pm - 01:50 pm\nDec 07, 2020 Final Exam:\n03:30 pm - 05:30 pm",
+            "professor": "Kurt Schmidt"
+        },
+        "Lecture & Lab 002": {
+            "style": "Remote Synchronous",
+            "time": "MWF 02:00 pm - 02:50 pm\nDec 07, 2020 Final Exam:\n03:30 pm - 05:30 pm",
+            "professor": "Kurt Schmidt"
+        },
+        "Lecture & Lab 005": {
+            "style": "Remote Synchronous",
+            "time": "MWF 10:00 am - 10:50 am",
+            "professor": "Dimitra Vista"
+        },
+        "Lecture & Lab 007": {
+            "style": "Remote Synchronous",
+            "time": "MWF 12:00 pm - 12:50 pm",
+            "professor": "Dimitra Vista"
+        },
+        "Lecture & Lab 03B": {
+            "style": "Remote Synchronous",
+            "time": "MWF 04:00 pm - 04:50 pm\nDec 07, 2020 Final Exam:\n03:30 pm - 05:30 pm",
+            "professor": "Kurt Schmidt"
+        },
+        "Lecture & Lab 08B": {
+            "style": "Remote Synchronous",
+            "time": "M 06:00 pm - 08:50 pm",
+            "professor": "Kurt Schmidt"
+        },
+        "Lecture & Lab 804": {
+            "style": "Remote Synchronous",
+            "time": "MWF 09:00 am - 09:50 am",
+            "professor": "Dimitra Vista"
+        },
+        "Lecture & Lab 806": {
+            "style": "Remote Synchronous",
+            "time": "MWF 11:00 am - 11:50 am",
+            "professor": "Dimitra Vista"
+        }
+    },
+    "CS 270": {
+        "Lecture 002": {
+            "style": "Remote Synchronous",
+            "time": "MW 03:00 pm - 04:50 pm",
+            "professor": "Mark W Boady"
+        },
+        "Lecture 007": {
+            "style": "Remote Synchronous",
+            "time": "TR 09:00 am - 10:50 am\nDec 08, 2020 Final Exam:\n03:30 pm - 05:30 pm",
+            "professor": "Bruce W Char"
+        },
+        "Lecture 04A": {
+            "style": "Remote Synchronous",
+            "time": "MW 11:00 am - 12:50 pm\nDec 08, 2020 Final Exam:\n03:30 pm - 05:30 pm",
+            "professor": "Bruce W Char"
+        },
+        "Lecture 801": {
+            "style": "Remote Synchronous",
+            "time": "MW 01:00 pm - 02:50 pm",
+            "professor": "Mark W Boady"
+        },
+        "Lecture 805": {
+            "style": "Remote Synchronous",
+            "time": "TR 01:00 pm - 02:50 pm",
+            "professor": "Galen K Long"
+        },
+        "Lecture 806": {
+            "style": "Remote Synchronous",
+            "time": "TR 03:00 pm - 04:50 pm",
+            "professor": "Galen K Long"
+        }
+    },
+    "CS 277": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "MW 10:30 am - 11:50 am",
+            "professor": "Galen K Long"
+        },
+        "Lecture 002": {
+            "style": "Remote Synchronous",
+            "time": "MW 12:00 pm - 01:20 pm",
+            "professor": "Galen K Long"
+        }
+    },
+    "CS 281": {
+        "Lab 060": {
+            "style": "Remote Synchronous",
+            "time": "R 03:00 pm - 04:50 pm",
+            "professor": "Constantine Katsinis"
+        },
+        "Lab 061": {
+            "style": "Remote Synchronous",
+            "time": "W 03:00 pm - 04:50 pm",
+            "professor": "Constantine Katsinis"
+        },
+        "Lab 062": {
+            "style": "Remote Synchronous",
+            "time": "F 03:00 pm - 04:50 pm",
+            "professor": "Constantine Katsinis"
+        },
+        "Lab 063": {
+            "style": "Remote Synchronous",
+            "time": "F 09:00 am - 10:50 am",
+            "professor": "Constantine Katsinis"
+        },
+        "Lecture A": {
+            "style": "Remote Synchronous",
+            "time": "M 06:00 pm - 08:50 pm",
+            "professor": "Constantine Katsinis"
+        },
+        "Lecture B": {
+            "style": "Remote Synchronous",
+            "time": "T 06:30 pm - 09:20 pm",
+            "professor": "Constantine Katsinis"
+        }
+    },
+    "CS 341": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "W 09:00 am - 11:50 am\nDec 09, 2020 Final Exam:\n01:00 pm - 03:00 pm",
+            "professor": "Frank J Lee"
+        }
+    },
+    "CS 361": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "MW 03:00 pm - 04:20 pm\nDec 07, 2020 Final Exam:\n01:00 pm - 03:00 pm",
+            "professor": "Bruce W Char"
+        }
+    },
+    "CS 375": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "TR 11:00 am - 12:20 pm",
+            "professor": "Dave H Augenblick"
+        }
+    },
+    "CS 377": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "M 03:00 pm - 05:50 pm",
+            "professor": "Spiros Mancoridis"
+        }
+    },
+    "CS 380": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "MW 12:00 pm - 01:20 pm\nDec 10, 2020 Final Exam:\n08:00 am - 10:00 am",
+            "professor": "Dario D Salvucci"
+        },
+        "Lecture 002": {
+            "style": "Remote Synchronous",
+            "time": "MW 01:30 pm - 02:50 pm\nDec 10, 2020 Final Exam:\n08:00 am - 10:00 am",
+            "professor": "Jeffrey L Popyack"
+        }
+    },
+    "CS 430": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "M 06:00 pm - 08:50 pm",
+            "professor": "David E Breen"
+        }
+    },
+    "CS 457": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "TR 11:00 am - 12:20 pm",
+            "professor": "Vasilis Gkatzelis"
+        }
+    },
+    "CS 472": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "T 06:30 pm - 09:20 pm",
+            "professor": "Michael T Kain"
+        }
+    },
+    "CS T480": {
+        "Special Topics-Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "F 04:00 pm - 05:50 pm",
+            "professor": "Vasilis Gkatzelis"
+        }
+    },
+    "CS 501": {
+        "Lecture 801": {
+            "style": "Remote Synchronous",
+            "time": "W 06:00 pm - 08:50 pm",
+            "professor": "Sam M Bever"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Sam M Bever"
+        }
+    },
+    "CS 503": {
+        "Lecture 801": {
+            "style": "Remote Synchronous",
+            "time": "R 06:30 pm - 09:20 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Brian L Stuart"
+        }
+    },
+    "CS 510": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "F 12:00 pm - 02:50 pm",
+            "professor": "Ehsan Baradaran Khosroshahi"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Ehsan Baradaran Khosroshahi"
+        }
+    },
+    "CS 520": {
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Mark W Boady"
+        }
+    },
+    "CS 521": {
+        "Lecture 801": {
+            "style": "Remote Synchronous",
+            "time": "T 06:30 pm - 09:20 pm",
+            "professor": "Manolis Pountourakis"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Manolis Pountourakis"
+        }
+    },
+    "CS 536": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "W 06:00 pm - 08:50 pm",
+            "professor": "David E Breen"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "David E Breen"
+        }
+    },
+    "CS 540": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "W 06:30 pm - 09:20 pm",
+            "professor": "Constantine Katsinis"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Constantine Katsinis"
+        }
+    },
+    "CS 567": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "M 06:00 pm - 08:50 pm",
+            "professor": "Jeremy R Johnson"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Jeremy R Johnson"
+        }
+    },
+    "CS 570": {
+        "Lecture 801": {
+            "style": "Remote Synchronous",
+            "time": "W 06:00 pm - 08:50 pm",
+            "professor": "Sam M Bever"
+        },
+        "Lecture 810": {
+            "style": "Remote Synchronous",
+            "time": "R 06:30 pm - 09:20 pm",
+            "professor": "Edwin G Dauber"
+        },
+        "Lecture 901": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Sam M Bever"
+        },
+        "Lecture 910": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Edwin G Dauber"
+        }
+    },
+    "CS 571": {
+        "Lecture 801": {
+            "style": "Remote Synchronous",
+            "time": "R 06:30 pm - 09:20 pm",
+            "professor": "Brian L Stuart"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Brian L Stuart"
+        }
+    },
+    "CS I599": {
+        "Independent/Directed Study 001": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Baris Taskin"
+        }
+    },
+    "CS 611": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "T 06:30 pm - 09:20 pm",
+            "professor": "Ehsan Baradaran Khosroshahi"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Ehsan Baradaran Khosroshahi"
+        }
+    },
+    "CS 613": {
+        "Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "R 06:30 pm - 09:20 pm",
+            "professor": "Edward Kim"
+        },
+        "Lecture 900": {
+            "style": "Online",
+            "time": "TBD TBD",
+            "professor": "Edward Kim"
+        }
+    },
+    "CS 695": {
+        "Research 001": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        },
+        "Research 002": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        }
+    },
+    "CS I699": {
+        "Independent/Directed Study 001": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Edward Kim"
+        },
+        "Independent/Directed Study 002": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        },
+        "Independent/Directed Study 003": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        }
+    },
+    "CS T780": {
+        "Special Topics-Lecture 001": {
+            "style": "Remote Synchronous",
+            "time": "F 04:00 pm - 05:50 pm",
+            "professor": "Vasilis Gkatzelis"
+        }
+    },
+    "CS I799": {
+        "Independent/Directed Study 001": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Edward Kim"
+        },
+        "Independent/Directed Study 002": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        },
+        "Independent/Directed Study 003": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        },
+        "Independent/Directed Study 004": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Jeremy R Johnson"
+        },
+        "Independent/Directed Study 005": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Chris MacLellan"
+        }
+    },
+    "CS 997": {
+        "Research 001": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "David E Breen"
+        },
+        "Research 003": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Colin S Gordon"
+        },
+        "Research 004": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Vasilis Gkatzelis"
+        },
+        "Research 006": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Geoffrey B Mainland"
+        },
+        "Research 007": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Spiros Mancoridis"
+        },
+        "Research 008": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Santiago Ontanon"
+        },
+        "Research 009": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Dario D Salvucci"
+        },
+        "Research 010": {
+            "style": "Face To Face",
+            "time": "TBD TBD",
+            "professor": "Ali Shokoufandeh"
+        }
+    }
+}

@@ -1,0 +1,510 @@
+Subject Code Course No. Instr Type Instr Method Sec CRN Course Title Days  /  Time Instructor
+CS 150 Lab Remote Synchronous 862
+15846
+Computer Science Principles
+F 01:00 pm - 02:50 pm
+Jeffrey L Popyack
+CS 150 Lecture Remote Synchronous A
+13114
+Computer Science Principles
+M 04:00 pm - 05:50 pm
+Dec 09, 2020 Final Exam:
+03:30 pm - 05:30 pm
+Jeffrey L Popyack
+CS 164 Lab Remote Synchronous 860
+15834
+Introduction to Computer Science
+W 09:00 am - 10:50 am
+Brian L Stuart
+CS 164 Lab Remote Synchronous 862
+15835
+Introduction to Computer Science
+W 12:30 pm - 02:20 pm
+Brian L Stuart
+CS 164 Lab Remote Synchronous 865
+15842
+Introduction to Computer Science
+R 04:00 pm - 05:50 pm
+Brian L Stuart
+CS 164 Lab Remote Synchronous 866
+15839
+Introduction to Computer Science
+R 09:00 am - 10:50 am
+Brian L Stuart
+CS 164 Lab Remote Synchronous 872
+15840
+Introduction to Computer Science
+F 12:30 pm - 02:20 pm
+Brian L Stuart
+CS 164 Lecture Remote Synchronous A
+10364
+Introduction to Computer Science
+M 12:00 pm - 01:50 pm
+Brian L Stuart
+CS 164 Lecture Remote Synchronous B
+11156
+Introduction to Computer Science
+T 01:00 pm - 02:50 pm
+Brian L Stuart
+CS 164 Lecture Remote Synchronous C
+11513
+Introduction to Computer Science
+T 04:00 pm - 05:50 pm
+Brian L Stuart
+CS 171 Lab Remote Asynchronous 060
+11702
+Computer Programming I
+TBD TBD
+Dave H Augenblick, Adelaida A Medlock
+CS 171 Lab Remote Asynchronous 062
+11703
+Computer Programming I
+TBD TBD
+Dave H Augenblick, Adelaida A Medlock
+CS 171 Lab Remote Asynchronous 063
+11704
+Computer Programming I
+TBD TBD
+Dave H Augenblick, Adelaida A Medlock
+CS 171 Lab Remote Asynchronous 064
+11705
+Computer Programming I
+TBD TBD
+Dave H Augenblick, Adelaida A Medlock
+CS 171 Lab Remote Asynchronous 065
+13186
+Computer Programming I
+TBD TBD
+Dave H Augenblick, Adelaida A Medlock
+CS 171 Lab Remote Asynchronous 069
+13768
+Computer Programming I
+TBD TBD
+Dave H Augenblick, Adelaida A Medlock
+CS 171 Lecture Remote Synchronous A
+11706
+Computer Programming I
+T 01:00 pm - 02:50 pm
+Dec 11, 2020 Final Exam:
+08:00 am - 10:00 am
+Adelaida A Medlock
+CS 171 Lecture Remote Synchronous B
+13183
+Computer Programming I
+M 01:00 pm - 02:50 pm
+Dec 11, 2020 Final Exam:
+08:00 am - 10:00 am
+Dave H Augenblick
+CS 172 Lab Remote Asynchronous 060
+12364
+Computer Programming II
+TBD TBD
+Dave H Augenblick
+CS 172 Lecture Remote Synchronous A
+12365
+Computer Programming II
+M 09:00 am - 10:50 am
+Dave H Augenblick
+CS 265 Lecture & Lab Remote Synchronous 001
+10297
+Advanced Programming Tools and Techniques
+MWF 01:00 pm - 01:50 pm
+Dec 07, 2020 Final Exam:
+03:30 pm - 05:30 pm
+Kurt Schmidt
+CS 265 Lecture & Lab Remote Synchronous 002
+11206
+Advanced Programming Tools and Techniques
+MWF 02:00 pm - 02:50 pm
+Dec 07, 2020 Final Exam:
+03:30 pm - 05:30 pm
+Kurt Schmidt
+CS 265 Lecture & Lab Remote Synchronous 005
+11207
+Advanced Programming Tools and Techniques
+MWF 10:00 am - 10:50 am
+Dimitra Vista
+CS 265 Lecture & Lab Remote Synchronous 007
+13769
+Advanced Programming Tools and Techniques
+MWF 12:00 pm - 12:50 pm
+Dimitra Vista
+CS 265 Lecture & Lab Remote Synchronous 03B
+15847
+Advanced Programming Tools and Techniques
+MWF 04:00 pm - 04:50 pm
+Dec 07, 2020 Final Exam:
+03:30 pm - 05:30 pm
+Kurt Schmidt
+CS 265 Lecture & Lab Remote Synchronous 08B
+15859
+Advanced Programming Tools and Techniques
+M 06:00 pm - 08:50 pm
+Kurt Schmidt
+CS 265 Lecture & Lab Remote Synchronous 804
+15853
+Advanced Programming Tools and Techniques
+MWF 09:00 am - 09:50 am
+Dimitra Vista
+CS 265 Lecture & Lab Remote Synchronous 806
+15858
+Advanced Programming Tools and Techniques
+MWF 11:00 am - 11:50 am
+Dimitra Vista
+CS 270 Lecture Remote Synchronous 002
+13772
+Mathematical Foundations of Computer Science
+MW 03:00 pm - 04:50 pm
+Mark W Boady
+CS 270 Lecture Remote Synchronous 007
+13776
+Mathematical Foundations of Computer Science
+TR 09:00 am - 10:50 am
+Dec 08, 2020 Final Exam:
+03:30 pm - 05:30 pm
+Bruce W Char
+CS 270 Lecture Remote Synchronous 04A
+13773
+Mathematical Foundations of Computer Science
+MW 11:00 am - 12:50 pm
+Dec 08, 2020 Final Exam:
+03:30 pm - 05:30 pm
+Bruce W Char
+CS 270 Lecture Remote Synchronous 801
+15868
+Mathematical Foundations of Computer Science
+MW 01:00 pm - 02:50 pm
+Mark W Boady
+CS 270 Lecture Remote Synchronous 805
+15875
+Mathematical Foundations of Computer Science
+TR 01:00 pm - 02:50 pm
+Galen K Long
+CS 270 Lecture Remote Synchronous 806
+15877
+Mathematical Foundations of Computer Science
+TR 03:00 pm - 04:50 pm
+Galen K Long
+CS 277 Lecture Remote Synchronous 001
+15499
+Algorithms and Analysis
+MW 10:30 am - 11:50 am
+Galen K Long
+CS 277 Lecture Remote Synchronous 002
+15500
+Algorithms and Analysis
+MW 12:00 pm - 01:20 pm
+Galen K Long
+CS 281 Lab Remote Synchronous 060
+11631
+Systems Architecture
+R 03:00 pm - 04:50 pm
+Constantine Katsinis
+CS 281 Lab Remote Synchronous 061
+11237
+Systems Architecture
+W 03:00 pm - 04:50 pm
+Constantine Katsinis
+CS 281 Lab Remote Synchronous 062
+12800
+Systems Architecture
+F 03:00 pm - 04:50 pm
+Constantine Katsinis
+CS 281 Lab Remote Synchronous 063
+15501
+Systems Architecture
+F 09:00 am - 10:50 am
+Constantine Katsinis
+CS 281 Lecture Remote Synchronous A
+11236
+Systems Architecture
+M 06:00 pm - 08:50 pm
+Constantine Katsinis
+CS 281 Lecture Remote Synchronous B
+11514
+Systems Architecture
+T 06:30 pm - 09:20 pm
+Constantine Katsinis
+CS 341 Lecture Remote Synchronous 001
+13201
+Serious Game Development
+W 09:00 am - 11:50 am
+Dec 09, 2020 Final Exam:
+01:00 pm - 03:00 pm
+Frank J Lee
+CS 361 Lecture Remote Synchronous 001
+10923
+Concurrent Programming
+MW 03:00 pm - 04:20 pm
+Dec 07, 2020 Final Exam:
+01:00 pm - 03:00 pm
+Bruce W Char
+CS 375 Lecture Remote Synchronous 001
+13777
+Web and Mobile App Development
+TR 11:00 am - 12:20 pm
+Dave H Augenblick
+CS 377 Lecture Remote Synchronous 001
+15502
+Software Security
+M 03:00 pm - 05:50 pm
+Spiros Mancoridis
+CS 380 Lecture Remote Synchronous 001
+10192
+Artificial Intelligence
+MW 12:00 pm - 01:20 pm
+Dec 10, 2020 Final Exam:
+08:00 am - 10:00 am
+Dario D Salvucci
+CS 380 Lecture Remote Synchronous 002
+15503
+Artificial Intelligence
+MW 01:30 pm - 02:50 pm
+Dec 10, 2020 Final Exam:
+08:00 am - 10:00 am
+Jeffrey L Popyack
+CS 430 Lecture Remote Synchronous 001
+11636
+Computer Graphics
+M 06:00 pm - 08:50 pm
+David E Breen
+CS 457 Lecture Remote Synchronous 001
+11829
+Data Structures and Algorithms I
+TR 11:00 am - 12:20 pm
+Vasilis Gkatzelis
+CS 472 Lecture Remote Synchronous 001
+10149
+Computer Networks: Theory, Applications and Programming
+T 06:30 pm - 09:20 pm
+Michael T Kain
+CS T480 Special Topics-Lecture Remote Synchronous 001
+16776
+Algorithms, Games and Learning
+F 04:00 pm - 05:50 pm
+Vasilis Gkatzelis
+CS 501 Lecture Remote Synchronous 801
+15879
+Introduction to Programming
+W 06:00 pm - 08:50 pm
+Sam M Bever
+CS 501 Lecture Online 900
+15505
+Introduction to Programming
+TBD TBD
+Sam M Bever
+CS 503 Lecture Remote Synchronous 801
+15881
+Systems Basics
+R 06:30 pm - 09:20 pm
+Brian L Stuart
+CS 503 Lecture Online 900
+15507
+Systems Basics
+TBD TBD
+Brian L Stuart
+CS 510 Lecture Remote Synchronous 001
+12007
+Introduction to Artificial Intelligence
+F 12:00 pm - 02:50 pm
+Ehsan Baradaran Khosroshahi
+CS 510 Lecture Online 900
+12031
+Introduction to Artificial Intelligence
+TBD TBD
+Ehsan Baradaran Khosroshahi
+CS 520 Lecture Online 900
+16482
+Computer Science Foundations
+TBD TBD
+Mark W Boady
+CS 521 Lecture Remote Synchronous 801
+15884
+Data Structures and Algorithms I
+T 06:30 pm - 09:20 pm
+Manolis Pountourakis
+CS 521 Lecture Online 900
+10407
+Data Structures and Algorithms I
+TBD TBD
+Manolis Pountourakis
+CS 536 Lecture Remote Synchronous 001
+11476
+Computer Graphics
+W 06:00 pm - 08:50 pm
+David E Breen
+CS 536 Lecture Online 900
+11477
+Computer Graphics
+TBD TBD
+David E Breen
+CS 540 Lecture Remote Synchronous 001
+11478
+High Performance Computing
+W 06:30 pm - 09:20 pm
+Constantine Katsinis
+CS 540 Lecture Online 900
+11479
+High Performance Computing
+TBD TBD
+Constantine Katsinis
+CS 567 Lecture Remote Synchronous 001
+15508
+Applied Symbolic Computation
+M 06:00 pm - 08:50 pm
+Jeremy R Johnson
+CS 567 Lecture Online 900
+15509
+Applied Symbolic Computation
+TBD TBD
+Jeremy R Johnson
+CS 570 Lecture Remote Synchronous 801
+15910
+Programming Foundations
+W 06:00 pm - 08:50 pm
+Sam M Bever
+CS 570 Lecture Remote Synchronous 810
+15886
+Programming Foundations
+R 06:30 pm - 09:20 pm
+Edwin G Dauber
+CS 570 Lecture Online 901
+15907
+Programming Foundations
+TBD TBD
+Sam M Bever
+CS 570 Lecture Online 910
+14415
+Programming Foundations
+TBD TBD
+Edwin G Dauber
+CS 571 Lecture Remote Synchronous 801
+15939
+Advanced Programming Techniques
+R 06:30 pm - 09:20 pm
+Brian L Stuart
+CS 571 Lecture Online 900
+15940
+Advanced Programming Techniques
+TBD TBD
+Brian L Stuart
+CS I599 Independent/Directed Study Face To Face 001
+16813
+Multi-Die Networks-On-Chip
+TBD TBD
+Baris Taskin
+CS 611 Lecture Remote Synchronous 001
+15510
+Game Artificial Intelligence
+T 06:30 pm - 09:20 pm
+Ehsan Baradaran Khosroshahi
+CS 611 Lecture Online 900
+15511
+Game Artificial Intelligence
+TBD TBD
+Ehsan Baradaran Khosroshahi
+CS 613 Lecture Remote Synchronous 001
+15512
+Machine Learning
+R 06:30 pm - 09:20 pm
+Edward Kim
+CS 613 Lecture Online 900
+15513
+Machine Learning
+TBD TBD
+Edward Kim
+CS 695 Research Face To Face 001
+16685
+Security Code Analysis
+TBD TBD
+Spiros Mancoridis
+CS 695 Research Face To Face 002
+16686
+Penetration Testing
+TBD TBD
+Spiros Mancoridis
+CS I699 Independent/Directed Study Face To Face 001
+16814
+Generative Adversarial Nets
+TBD TBD
+Edward Kim
+CS I699 Independent/Directed Study Face To Face 002
+16815
+Neuromodulated Metalearning
+TBD TBD
+Spiros Mancoridis
+CS I699 Independent/Directed Study Face To Face 003
+16816
+Loss Landscape of Neural Nets
+TBD TBD
+Spiros Mancoridis
+CS T780 Special Topics-Lecture Remote Synchronous 001
+16777
+Algorithms, Games and Learning
+F 04:00 pm - 05:50 pm
+Vasilis Gkatzelis
+CS I799 Independent/Directed Study Face To Face 001
+16293
+Reinforcement Learning
+TBD TBD
+Edward Kim
+CS I799 Independent/Directed Study Face To Face 002
+16359
+IoT Security
+TBD TBD
+Spiros Mancoridis
+CS I799 Independent/Directed Study Face To Face 003
+16406
+ML for Malware Analysis
+TBD TBD
+Spiros Mancoridis
+CS I799 Independent/Directed Study Face To Face 004
+16407
+Equational Reasoning Tool
+TBD TBD
+Jeremy R Johnson
+CS I799 Independent/Directed Study Face To Face 005
+17004
+Personal Cognitive Systems
+TBD TBD
+Chris MacLellan
+CS 997 Research Face To Face 001
+16157
+Research in Computer Science
+TBD TBD
+David E Breen
+CS 997 Research Face To Face 003
+16159
+Research in Computer Science
+TBD TBD
+Colin S Gordon
+CS 997 Research Face To Face 004
+16160
+Research in Computer Science
+TBD TBD
+Vasilis Gkatzelis
+CS 997 Research Face To Face 006
+16162
+Research in Computer Science
+TBD TBD
+Geoffrey B Mainland
+CS 997 Research Face To Face 007
+16163
+Research in Computer Science
+TBD TBD
+Spiros Mancoridis
+CS 997 Research Face To Face 008
+16164
+Research in Computer Science
+TBD TBD
+Santiago Ontanon
+CS 997 Research Face To Face 009
+16165
+Research in Computer Science
+TBD TBD
+Dario D Salvucci
+CS 997 Research Face To Face 010
+16166
+Research in Computer Science
+TBD TBD
+Ali Shokoufandeh

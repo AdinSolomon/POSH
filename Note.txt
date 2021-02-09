@@ -1,0 +1,38 @@
+0. TODO
+    - Figure out how to parse the table text efficiently...
+    - Allow for additions to already-fetched data pls...
+    - Merge Catalog and TMS data?
+
+
+
+
+1. Term Master Schedule
+    - JSON from course to offerings
+2. Course Catalog
+    - JSON from course to description, requirements, etc.
+3. Professor Data
+    - Professor name to ratemyprofessors.com data, link
+
+100. ALL THE COURSE INFO
+    - Master JSON file (maybe separated by college?)
+        - Course symbol/number (CS 101) maps to:
+            - course number
+            - course name
+            - credits
+            - course dscription
+            - repeatable?
+            - offerings - {fall: {section01: {professor, style, section}, winter: ...}
+            - prerequisites (this one might be difficult)
+            - co-requisites
+            - anything else?
+                - maybe point to courses which have this as a prerequisite/co-requisite?
+
+101. How could we design an efficient search strategy?
+    - users might want to search by:
+        - course symbol/number
+        - course name
+        - course description
+        - requirement directionality
+        - offerings
+        - credits
+    - 
