@@ -2,6 +2,7 @@
 from selenium import webdriver
 
 HomePage = "https://termmasterschedule.drexel.edu/webtms_du/app"
+xpath_to_course_table = "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[6]/td/table/tbody"
 
 # Functions
 def get_term_schedule(term:str, college:str, major:str) -> dict:
@@ -58,6 +59,7 @@ def get_term_schedule(term:str, college:str, major:str) -> dict:
     #   - This is pretty slow, but fine for now
     #   - At some point just using regex on the text attribute of the course table is the move
     courses = {}
+    
     for row_num in range(total_rows):
         row = [driver.find_element_by_xpath(xpath_to_course_table + "/tr[{0}]".format(2+row_num) + "/td[{0}]".format(c)).text for c in range(1, col_count+1)]
         course_number = " ".join(row[:2])

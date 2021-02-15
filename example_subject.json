@@ -1,0 +1,15 @@
+{
+    "subject" : "Computer Science",
+    "code" : "CS",
+    "last_updated" : "2021-01-01 13:30:00",
+    "courses" : {
+        "150" : {
+            "name" : "I don't know man this is an example",
+            "credits" : "0.0",
+            "description" : ":(",
+            "College/Department": "College of Computing and Informatics",
+            "Repeat Status": "Can be repeated multiple times for credit"
+        }
+    }
+
+}
