@@ -4,6 +4,13 @@ from selenium import webdriver
 HomePage = "https://termmasterschedule.drexel.edu/webtms_du/app"
 xpath_to_course_table = "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[6]/td/table/tbody"
 
+Seasons = ["Fall", "Winter", "Spring", "Summer"]
+CurrentYear = 21
+Quarters = [f"{season} Quarter {CurrentYear-1}-{CurrentYear}" for season in Seasons]
+Quarters += [f"{season} Quarter {CurrentYear-2}-{CurrentYear-1}" for season in Seasons]
+Semesters = [f"{season} Semester {CurrentYear-1}-{CurrentYear}" for season in Seasons]
+#Semesters = [f"{season} Semester {CurrentYear-2}-{CurrentYear-1}" for season in Seasons]
+
 # Functions
 def get_term_schedule(term:str, college:str, major:str) -> dict:
     # Eample return dictionary:

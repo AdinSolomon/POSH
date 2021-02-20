@@ -3,7 +3,7 @@ import os
 import json
 from selenium import webdriver
 
-import util
+from util import util
 import CourseCatalog as CC
 import TermMasterSchedule as TMS
 

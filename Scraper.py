@@ -6,7 +6,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 import CourseCatalog as CC
 import TermMasterSchedule as TMS
-from util import dict_deepupdate # TODO - fix the scrape functions update usage
+from util.util import dict_deepupdate
+from util.exceptions import UnsupportedBrowser
 
 SEP = '/'
 
@@ -22,6 +23,7 @@ class Scraper:
     def __init__(self, browser:str = "Chrome"):
         self.browser = browser
         self.driver = None
+        self.urls = []
     def __del__(self):
         self.stop()
     # Driver Managers
@@ -37,13 +39,24 @@ class Scraper:
         if self.browser == "Chrome":
             self.driver = webdriver.Chrome()
         else:
-            print("Chrome is the only browser supported right now! Driver has not been started.")
+            raise UnsupportedBrowser("Chrome is the only supported browser as of now")
     def stop(self):
         if self.is_started():
             self.driver.close()
             self.driver = None
-    # Scraping Functions
-    def get_all_subjects(self) -> dict:
+    def driver_url_put(self):
+        if self.is_started():
+            self.urls.append(self.driver.current_url)
+        else:
+            self.start()
+    def driver_url_pop(self):
+        assert (self.is_started()), "Driver was not on when driver_url_pop was called"
+        if len(self.urls) > 0:
+            self.driver.get(self.urls.pop(0))
+        else:
+            self.stop()
+    # Scrape Categories
+    def get_CC_subjects(self) -> dict:
         # returns a dictionary mapping subject codes to subject
         # names as they appear in the course catalog
         self.start()
@@ -56,33 +69,56 @@ class Scraper:
             self.driver.get(url)
             for elem in self.driver.find_elements_by_xpath(
             "/html/body/div[@id='wrapper']/div[@id='content_wrapper']/div/div/div/div/div/a"):
-                try:
-                    subject_code = re.findall(CC.major_symbol_regex, elem.text)[0]
-                except:
-                    print(elem.text)
+                subject_code = re.findall(CC.major_symbol_regex, elem.text)[0]
                 subject_name = elem.text.replace(f"({subject_code})","").strip()
-                subjects[subject_code] = subject_name
+                subjects[subject_code] = [subject_name]
         self.stop()
         return subjects
-    def get_all_colleges(self) -> dict:
+    def get_CC_colleges(self) -> dict:
         # TODO - this!
-        # Maybe get these from TMS? Could get them from CC and also get the codes nobody cares about!
         pass
-    def scrapeCourseCatalog(self, 
-                            term_lengths:list = [],
-                            degrees:list      = [],
-                           #colleges:list     = [],
-                            subjects:list     = []) -> dict:
+    def get_TMS_subjects(self) -> dict:
+        # TODO - speed this up by changing the way odd/even links are found
+        self.start()
+        self.driver.get(TMS.HomePage)
+        subjects = {}
+        for quarter in TMS.Quarters:
+            self.driver.find_element_by_link_text(quarter).click()
+            for college in [elem.text for elem in self.driver.find_elements_by_xpath("/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/a")]:
+                self.driver.find_element_by_link_text(college).click()
+                for subject_link in (self.driver.find_elements_by_class_name("odd") + self.driver.find_elements_by_class_name("even")):
+                    subject_code = re.findall(CC.major_symbol_regex, subject_link.text)[0].upper()
+                    subject_name = subject_link.text.replace(f"({subject_code})","").strip()
+                    subjects[subject_code] = subject_name
+                self.driver.back()
+            self.driver.back()
+        self.stop()
+        return subjects
+    def get_TMS_colleges(self) -> list:
+        self.start()
+        self.driver.get(TMS.HomePage)
+        colleges = set()
+        for quarter in TMS.Quarters:
+            self.driver.find_element_by_link_text(quarter).click()
+            for elem in self.driver.find_elements_by_xpath(
+            "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/a"):
+                colleges.add(elem.text)
+            self.driver.back()
+        self.stop()
+        return colleges
+    # Scrape Course Data
+    def scrapeCC(self, 
+        term_lengths:list = [],
+        degrees:list      = [],
+       #colleges:list     = [],
+        subjects:list     = []) -> dict:
         # TODO - Add support for college selection
         # Returns a dictionary mapping from subject symbol to course data
         #   ex.   { "CS" : { "150" : ... } }
         # If any parameters are [], it is assumed that the user is already at a page designating
         # the desired parameter. For example, if term_length=[], then self.driver.current_url is
         # parsed for the term length and scraping will commence accordingly.
-        origin = None
-        if self.is_started():
-            origin = self.driver.current_url
-        self.start(started_ok = True)
+        self.driver_url_put()
         
         def _scrape() -> dict:
             courses = {}
@@ -130,9 +166,9 @@ class Scraper:
         # if there are no arguments, assume that the driver is already at the page to scrape
         if term_lengths == None and degrees == None and subjects == None:
             assert (CC.HomePage in (current_url := self.driver.current_url)), "Not at the course catalog!"
-            assert (len(things := current_url.split(SEP)) == 8), "Not at a subject's page in the course catalog!"
+            assert (len(thingies := current_url.split(SEP)) == 8), "Not at a subject's page in the course catalog!"
             l, g, s = thingies[4:7]
-            assert (l in CC.TermLength), "term length is not valid!"
+            assert (l in CC.TermLengths), "term length is not valid!"
             assert (g in CC.Degrees), "degree is not valid!"
             assert (len(s) <= 2), "subject is not valid!"
             return { s : _scrape() }
@@ -167,16 +203,13 @@ class Scraper:
             json.dump(failed_finds, f)
         
         # Return to where the driver was when this function was called
-        if origin:
-            self.driver.get(origin)
-        else:
-            self.stop()
+        self.driver_url_pop()
 
         return data
-    def scrapeTermMasterSchedule(self,
-                                 terms:list    = [], 
-                                 colleges:list = [],
-                                 subjects:list = []) -> dict:
+    def scrapeTMS(self,
+        terms:list    = [], 
+        colleges:list = [],
+        subjects:list = []) -> dict:
         # Returns a dictionary mapping from subject symbol to course data
         #   ex.   { "CS" : { "150" : { "Fall Quarter 20-21" : { "Section01" : {...} } } } }
         # If any parameters are [], it is assumed that the user is already at a page designating
@@ -189,10 +222,7 @@ class Scraper:
         # instead of subject/course_number/offerings
 
         # Return to the driver's starting location after scraping
-        origin = None
-        if self.is_started():
-            origin = self.driver.current_url
-        self.start(started_ok = True)
+        self.driver_url_put()
 
         def _scrape() -> dict:
             # Returns a dictionary mapping from course number to sections
@@ -202,12 +232,11 @@ class Scraper:
                 course_number:str = (tr := lines[0].split())[1]
                 section_id:str = tr[-1]
                 section_info:dict = {
-                    "format"    : None, # TODO - this is a little more complicated
-                    "style"     : None, # TODO - same with this boi
-                    "CRN"       : lines[1],
-                    "name"      : lines[2],
-                    "schedule"  : '\n'.join(lines[3:-1]),
-                    "professor" : lines[-1]
+                    "format/style" : ' '.join(tr[2:-1]),
+                    "CRN"          : lines[1],
+                    "name"         : lines[2],
+                    "schedule"     : " | ".join(lines[3:-1]),
+                    "professor"    : lines[-1]
                 }
                 return { course_number : { section_id : section_info} }
             table_data = self.driver.find_element_by_xpath(TMS.xpath_to_course_table).text.split('\n')
@@ -223,7 +252,7 @@ class Scraper:
                     dict_deepupdate(courses, _parse_course(current_section))
                     # Start loading another section
                     count = 1
-                    curent_section = [line]
+                    current_section = [line]
                 else:
                     count += 1
                     current_section.append(line)
@@ -245,48 +274,43 @@ class Scraper:
         failed_finds = {"origin":"scrapeTermMasterSchedule()"}
         self.driver.get(TMS.HomePage)
         for term in terms:
-            print(term)
             try:
                 self.driver.find_element_by_link_text(term).click()
                 for college in colleges:
-                    print(college)
                     try:
                         self.driver.find_element_by_link_text(college).click()
                         for subject in _subjects():
-                            print(subject)
                             try:
                                 self.driver.find_element_by_partial_link_text(f"({subject})").click()
-                                # This is getting complicated...
                                 scraped_data = _scrape() # { "150" : { "Section01" : {...} } }
-                                new_data = {subject : {}} # similar to data for update()
-                                for course_number, section_data in scraped_data.items():
-                                    #json.dump(scraped_data, open('temp.json','w'))
-                                    section_id = [*section_data.keys()][0]
-                                    section_data = [*section_data.values()][0]
-                                    new_data[subject][course_number] = {}
-                                    new_data[subject][course_number][term] = {}
-                                    new_data[subject][course_number][term][section_id] = section_data
-                                dict_deepupdate(data, new_data)
+                                if subject not in data:
+                                    data[subject] = {}
+                                for course_number, sections in scraped_data.items():
+                                    if not data[subject].get(course_number):
+                                        data[subject][course_number] = {}
+                                    if not data[subject][course_number].get(term):
+                                        data[subject][course_number][term] = {}
+                                    for section_id, section_data in sections.items():
+                                        data[subject][course_number][term][section_id] = section_data
                                 self.driver.back() 
                             except NoSuchElementException:
                                 failed_finds[f"/{term}/{college}/"] = [subject] + \
                                     failed_finds.get(f"/{term}/{college}/", [])
+                        self.driver.back()
                     except NoSuchElementException:
                         failed_finds[f"/{term}/"] = [college] + \
                             failed_finds.get(f"/{term}/", [])
+                self.driver.back()
             except NoSuchElementException: # Finding the term failed
                 failed_finds["/"] = [term] + \
                     failed_finds.get("/", [])
         # In case anyone wants these...
-        with open("C:\\Users\\adinb\\Documents\\Projects\\POSH\\temp_failed_finds.json", "w") as f:
+        with open("C:\\Users\\adinb\\Documents\\Personal\\Projects\\POSH\\temp_failed_finds.json", "w") as f:
             json.dump(failed_finds, f)
 
         # Return to the driver's starting location
-        if origin:
-            self.driver.get(origin)
-        else:
-            self.stop()
+        self.driver_url_pop()
 
         # Don't forget this part!
         return data
-        
+    
