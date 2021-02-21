@@ -1,38 +1,21 @@
-0. TODO
-    - Figure out how to parse the table text efficiently...
-    - Allow for additions to already-fetched data pls...
-    - Merge Catalog and TMS data?
-
-
-
-
-1. Term Master Schedule
-    - JSON from course to offerings
-2. Course Catalog
-    - JSON from course to description, requirements, etc.
-3. Professor Data
-    - Professor name to ratemyprofessors.com data, link
-
-100. ALL THE COURSE INFO
-    - Master JSON file (maybe separated by college?)
-        - Course symbol/number (CS 101) maps to:
-            - course number
-            - course name
-            - credits
-            - course dscription
-            - repeatable?
-            - offerings - {fall: {section01: {professor, style, section}, winter: ...}
-            - prerequisites (this one might be difficult)
-            - co-requisites
-            - anything else?
-                - maybe point to courses which have this as a prerequisite/co-requisite?
-
-101. How could we design an efficient search strategy?
-    - users might want to search by:
-        - course symbol/number
-        - course name
-        - course description
-        - requirement directionality
-        - offerings
-        - credits
-    - 
+TODO
+    - Allow for additions to already-fetched data?
+    - Initialize the database!
+    - Figure out a way to represent the schedules/POSs/requirements/agendas/etc.
+        - Each POS is subject to a set of requirements, and each requirement
+          could have a agenda - a way to meet that requirement - that could easily
+          be represented visually. For example, if I need to take 2 CS tracks,
+          one agenda could be the AI and Theory tracks, and another could be the AI
+          and DSnA tracks. Each of those agendas could have a bunch of resolutions
+          associated with them which are they ways in which the agendas could be
+          realized.
+            - This plan just submits to a computational nightmare, though some
+              optimization and background processes could mask most of it,
+              especially if the processing is broken down into agendas... The
+              alternative to breaking down the search is to do some integer
+              programming or some other efficient SAT solver
+        - We could do a whole bunch of computer algebra to represent requirements
+          like they're represented in prerequisites for courses and also on
+          DegreeWorks
+    - ???
+    - Profit

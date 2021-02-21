@@ -6,18 +6,14 @@ from selenium.common.exceptions import NoSuchElementException
 
 import CourseCatalog as CC
 import TermMasterSchedule as TMS
-from util.util import dict_deepupdate
+import util.web as web
+from util.general import dict_deepupdate
 from util.exceptions import UnsupportedBrowser
 
-SEP = '/'
 
-def make_url(a:str, b:str, sep:str = SEP) -> str:
-    return a + (sep if a[-1] != sep else "") + b
-def make_url2(parts:list, sep:str = SEP) -> str:
-    url = parts.pop(0)
-    for part in parts:
-        url += (sep if url[-1] != sep else "") + part
-    return url
+SEP = '/'
+major_symbol_regex = r"\(([A-Z-]{2,})\)"
+college_symbol_regex = r"\(([A-Z)]{,2})\)"
 
 class Scraper:
     def __init__(self, browser:str = "Chrome"):
@@ -55,58 +51,122 @@ class Scraper:
             self.driver.get(self.urls.pop(0))
         else:
             self.stop()
-    # Scrape Categories
-    def get_CC_subjects(self) -> dict:
-        # returns a dictionary mapping subject codes to subject
-        # names as they appear in the course catalog
+    # Scrape Navigation Data
+    def get_CC_nav(self) -> dict:
         self.start()
-        self.driver.get(CC.HomePage)
-        urls = sum([[make_url2([CC.HomePage,term_length,degree])
-                        for degree in CC.Degrees] 
-                            for term_length in CC.TermLengths],[])
-        subjects = {}
-        for url in urls:
+        errors = {}
+        subject_names = {}
+        subject_colleges = {}
+        college_subjects = {}
+        for url in CC.URLs:
             self.driver.get(url)
-            for elem in self.driver.find_elements_by_xpath(
-            "/html/body/div[@id='wrapper']/div[@id='content_wrapper']/div/div/div/div/div/a"):
-                subject_code = re.findall(CC.major_symbol_regex, elem.text)[0]
-                subject_name = elem.text.replace(f"({subject_code})","").strip()
-                subjects[subject_code] = [subject_name]
-        self.stop()
-        return subjects
-    def get_CC_colleges(self) -> dict:
-        # TODO - this!
-        pass
-    def get_TMS_subjects(self) -> dict:
-        # TODO - speed this up by changing the way odd/even links are found
+            Columns = self.driver.find_elements_by_class_name("qugcourses")
+            for column in Columns:
+                for elem in column.find_elements_by_xpath(".//*"):
+                    if elem.tag_name == "h2": # College element
+                        college = elem.text
+                        if college not in college_subjects:
+                            college_subjects[college] = []
+                    elif elem.tag_name == "a": # Subject element
+                        subject_code = re.findall(major_symbol_regex, elem.text)[0]
+                        subject_name = elem.text.replace(f"({subject_code})","").strip()
+                        # Record subject code -> subject name
+                        subject_names[subject_code] = subject_name
+                        # Record subject code -> colleges
+                        if subject_code not in subject_colleges:
+                            subject_colleges[subject_code] = []
+                        if college not in subject_colleges[subject_code]:
+                            subject_colleges[subject_code].append(college)
+                        # Record college -> subject codes
+                        if subject_code not in college_subjects[college]:
+                            college_subjects[college].append(subject_code)
+                    else:
+                        if "element_tags" not in errors:
+                            errors["element_tags"] = []
+                        if elem.tag_name not in errors["element_tags"]:
+                            errors["element_tags"].append(elem.tag_name)
+        return {
+            'subject_names' : subject_names,
+            'college_subjects' : college_subjects,
+            'subject_colleges' : subject_colleges,
+            'errors' : errors
+        }
+    def get_TMS_nav(self) -> dict:
         self.start()
         self.driver.get(TMS.HomePage)
-        subjects = {}
-        for quarter in TMS.Quarters:
-            self.driver.find_element_by_link_text(quarter).click()
-            for college in [elem.text for elem in self.driver.find_elements_by_xpath("/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/a")]:
+        errors = {}
+        subject_names = {}
+        subject_colleges = {}
+        college_subjects = {}
+        for term in TMS.Terms:
+            try:
+                self.driver.find_element_by_link_text(term).click()
+            except:
+                errors["Terms"] = errors.get("Terms",[]) + [term]
+                continue
+            for college in list(elem.text for elem in self.driver.find_elements_by_xpath("/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/a")):
+                if college not in college_subjects:
+                    college_subjects[college] = []
                 self.driver.find_element_by_link_text(college).click()
                 for subject_link in (self.driver.find_elements_by_class_name("odd") + self.driver.find_elements_by_class_name("even")):
-                    subject_code = re.findall(CC.major_symbol_regex, subject_link.text)[0].upper()
+                    subject_code = re.findall(major_symbol_regex, subject_link.text)[0].upper()
                     subject_name = subject_link.text.replace(f"({subject_code})","").strip()
-                    subjects[subject_code] = subject_name
+                    # Record subject code -> subject name
+                    subject_names[subject_code] = subject_name
+                    # Record subject_code -> colleges
+                    if subject_code not in subject_colleges:
+                        subject_colleges[subject_code] = []
+                    if college not in subject_colleges[subject_code]:
+                        subject_colleges[subject_code].append(college)
+                    # Record college -> subject code
+                    if subject_code not in college_subjects[college]:
+                        college_subjects[college].append(subject_code)
                 self.driver.back()
             self.driver.back()
         self.stop()
-        return subjects
-    def get_TMS_colleges(self) -> list:
-        self.start()
-        self.driver.get(TMS.HomePage)
-        colleges = set()
-        for quarter in TMS.Quarters:
-            self.driver.find_element_by_link_text(quarter).click()
-            for elem in self.driver.find_elements_by_xpath(
-            "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[4]/td/div/a"):
-                colleges.add(elem.text)
-            self.driver.back()
-        self.stop()
-        return colleges
-    # Scrape Course Data
+        return {
+            'subject_names' : subject_names,
+            'college_subjects' : college_subjects,
+            'subject_colleges' : subject_colleges,
+            'errors' : errors
+        }
+    def get_all_nav(self) -> dict:
+        CC_data = self.get_CC_nav()
+        TMS_data = self.get_TMS_nav()
+        # Subject Names
+        subject_names = {subject : {"CC" : name} for subject, name in CC_data["subject_names"].items()}
+        dict_deepupdate(subject_names, {subject : {"TMS" : name} for subject, name in TMS_data["subject_names"].items()})
+        for v in subject_names.values():
+            if "CC" not in v:
+                v["CC"] = None
+            if "TMS" not in v:
+                v["TMS"] = None
+        # Subject -> Colleges
+        subject_colleges = {subject : {"CC" : colleges} for subject, colleges in CC_data["subject_colleges"].items()}
+        dict_deepupdate(subject_colleges, {subject : {"TMS" : colleges} for subject, colleges in TMS_data["subject_colleges"].items()})
+        for v in subject_colleges.values():
+            if "CC" not in v:
+                v["CC"] = None
+            if "TMS" not in v:
+                v["TMS"] = None
+        # College -> Subjects
+        college_subjects = {college : {"CC" : subjects} for college, subjects in CC_data["college_subjects"].items()}
+        dict_deepupdate(college_subjects, {college : {"TMS" : subjects} for college, subjects in TMS_data["college_subjects"].items()})
+        for v in college_subjects.values():
+            if "CC" not in v:
+                v["CC"] = None
+            if "TMS" not in v:
+                v["TMS"] = None
+        # Errors (i guess)
+        errors = CC_data["errors"]
+        errors.update(TMS_data["errors"])
+        return {
+            "subject_names" : subject_names,
+            "subject_colleges" : subject_colleges,
+            "college_subjects" : college_subjects,
+            "errors" : errors
+        }
+    # Scrape Subject/Course Data
     def scrapeCC(self, 
         term_lengths:list = [],
         degrees:list      = [],
@@ -127,9 +187,9 @@ class Scraper:
                 title_line = lines[0].split(" ")
                 course_number = title_line[1] # " ".join(title_line[:2]) gives 'CS 150' instead of '150'
                 courses[course_number] = {}
-                courses[course_number]["name"] = " ".join(title_line[2:-2])
-                courses[course_number]["credits"] = title_line[-2]
-                courses[course_number]["description"] = lines[1]
+                courses[course_number]["Name"] = " ".join(title_line[2:-2])
+                courses[course_number]["Credits"] = title_line[-2]
+                courses[course_number]["Description"] = lines[1]
                 for line in lines[2:]:
                     key = line.split(':')[0]
                     val = line.replace(key+':', "").strip()
@@ -144,7 +204,7 @@ class Scraper:
                 assert (CC.HomePage in current_url), "Not at the course catalog!"
                 current_length = current_url.split(SEP)[4]
                 assert (current_length in CC.TermLengths), "Not at a valid term length in the course catalog!"
-                urls = [make_url(CC.HomePage, current_length)]
+                urls = [web.make_url(CC.HomePage, current_length)]
             else:
                 assert (set(term_lengths).issubset(set(CC.TermLengths))), "One of your term lengths is not valid!"
                 urls = [CC.HomePage + length for length in term_lengths]
@@ -157,7 +217,7 @@ class Scraper:
                 urls = [url + degree for url in urls]
             else:
                 assert (set(degrees).issubset(set(CC.Degrees))), "One of your degrees is not valid!"
-                urls = sum([[make_url(url, degree) for degree in degrees] for url in urls], [])
+                urls = sum([[web.make_url(url, degree) for degree in degrees] for url in urls], [])
             return urls
         def _subjects(subjects:[str] = subjects):
             for subject in subjects:
@@ -178,7 +238,7 @@ class Scraper:
         #      add ya boi to the dictionary to be returned!
         
         # compile the list of length/degree urls first
-        urls = _make_urls()
+        urls = _web.make_urls()
 
         # while urls can be generated using the subject symbol, a length/degree
         # page might not have that subject so the url may be invalid. Therefore,
@@ -193,13 +253,15 @@ class Scraper:
                 try:
                     elem = self.driver.find_element_by_partial_link_text("({0})".format(subject))
                     elem.click()
+                    if subject not in data:
+                        data[subject] = {}
                     dict_deepupdate(data[subject], _scrape())
                     self.driver.back()
                 except NoSuchElementException:
                     failed_finds[self.driver.current_url] = [subject] + \
                         failed_finds.get(self.driver.current_url, [])
         # Keep failed finds in case someone wants them
-        with open("C:\\Users\\adinb\\Documents\\Projects\\POSH\\temp_failed_finds.json", "w") as f:
+        with open("C:\\Users\\adinb\\Documents\\Personal\\Projects\\POSH\\temp_failed_finds.json", "w") as f:
             json.dump(failed_finds, f)
         
         # Return to where the driver was when this function was called
@@ -232,11 +294,11 @@ class Scraper:
                 course_number:str = (tr := lines[0].split())[1]
                 section_id:str = tr[-1]
                 section_info:dict = {
-                    "format/style" : ' '.join(tr[2:-1]),
+                    "Format/Style" : ' '.join(tr[2:-1]),
                     "CRN"          : lines[1],
-                    "name"         : lines[2],
-                    "schedule"     : " | ".join(lines[3:-1]),
-                    "professor"    : lines[-1]
+                   #"Name"         : lines[2],
+                    "Schedule"     : " | ".join(lines[3:-1]),
+                    "Professor"    : lines[-1]
                 }
                 return { course_number : { section_id : section_info} }
             table_data = self.driver.find_element_by_xpath(TMS.xpath_to_course_table).text.split('\n')
