@@ -1,5 +1,6 @@
 TODO
     - Allow for additions to already-fetched data?
+    - It would be neat to have unit tests
     - Initialize the database!
     - Figure out a way to represent the schedules/POSs/requirements/agendas/etc.
         - Each POS is subject to a set of requirements, and each requirement

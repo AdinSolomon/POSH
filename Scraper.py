@@ -10,8 +10,6 @@ import util.web as web
 from util.general import dict_deepupdate
 from util.exceptions import UnsupportedBrowser
 
-
-SEP = '/'
 major_symbol_regex = r"\(([A-Z-]{2,})\)"
 college_symbol_regex = r"\(([A-Z)]{,2})\)"
 
@@ -202,7 +200,7 @@ class Scraper:
                 # the driver is already at the page of the desired term length
                 current_url = self.driver.current_url
                 assert (CC.HomePage in current_url), "Not at the course catalog!"
-                current_length = current_url.split(SEP)[4]
+                current_length = current_url.split(web.SEP)[4]
                 assert (current_length in CC.TermLengths), "Not at a valid term length in the course catalog!"
                 urls = [web.make_url(CC.HomePage, current_length)]
             else:
@@ -212,9 +210,9 @@ class Scraper:
                 # the driver is already at the page of the desired degree level
                 current_url = self.driver.current_url
                 assert (CC.HomePage in current_url), "Not at the course catalog!"
-                current_degree = current_url.split(SEP)[5]
+                current_degree = current_url.split(web.SEP)[5]
                 assert (current_degree in CC.Degrees), "Not at a valid degree in the course catalog!"
-                urls = [url + degree for url in urls]
+                urls = [web.make_url(url, current_degree) for url in urls]
             else:
                 assert (set(degrees).issubset(set(CC.Degrees))), "One of your degrees is not valid!"
                 urls = sum([[web.make_url(url, degree) for degree in degrees] for url in urls], [])
@@ -226,7 +224,7 @@ class Scraper:
         # if there are no arguments, assume that the driver is already at the page to scrape
         if term_lengths == None and degrees == None and subjects == None:
             assert (CC.HomePage in (current_url := self.driver.current_url)), "Not at the course catalog!"
-            assert (len(thingies := current_url.split(SEP)) == 8), "Not at a subject's page in the course catalog!"
+            assert (len(thingies := current_url.split(web.SEP)) == 8), "Not at a subject's page in the course catalog!"
             l, g, s = thingies[4:7]
             assert (l in CC.TermLengths), "term length is not valid!"
             assert (g in CC.Degrees), "degree is not valid!"
@@ -238,7 +236,7 @@ class Scraper:
         #      add ya boi to the dictionary to be returned!
         
         # compile the list of length/degree urls first
-        urls = _web.make_urls()
+        urls = _make_urls()
 
         # while urls can be generated using the subject symbol, a length/degree
         # page might not have that subject so the url may be invalid. Therefore,
