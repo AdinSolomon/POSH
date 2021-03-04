@@ -8,6 +8,7 @@ import Scraper
 import CourseCatalog as CC
 import TermMasterSchedule as TMS
 from util.file_system import make_path
+from util.exceptions import InvalidSubject, NoColleges
 
 datetime_format = "%Y-%m-%d %H:%M:%S"
 
@@ -36,7 +37,12 @@ def update_navigation() -> None:
     json.dump(nav_data["errors"], open(make_path(error_dir, 'update_nav.json'),'w'))
 
 def update_subject(subject_code:str) -> None:
-    subject_colleges = json.load(open(make_path(navigation_dir, "subject_colleges.json")))[subject_code]
+    subject_colleges = json.load(open(make_path(navigation_dir, "subject_colleges.json")))
+    if not (colleges := subject_colleges.get([subject_code], None)):
+        raise InvalidSubject(f"The subject code {subject_code} was not found in subject_colleges.json")
+    if not (colleges := colleges["TMS"]):
+        raise NoColleges(f"The subject code {subject_code} has not TMS entry")
+    
     scraper = Scraper.Scraper()
     data = {
         "Subject Code" : subject_code,
@@ -44,7 +50,7 @@ def update_subject(subject_code:str) -> None:
         "Last Updated" : datetime.datetime.now().strftime(datetime_format),
         "Courses" : scraper.scrapeCC(term_lengths=CC.TermLengths, degrees=CC.Degrees, subjects=[subject_code])[subject_code]
     }
-    for course_number, course_offerings in scraper.scrapeTMS(terms=TMS.Quarters, colleges=[subject_colleges["TMS"]], subjects=[subject_code])[subject_code].items():
+    for course_number, course_offerings in scraper.scrapeTMS(terms=TMS.Quarters, colleges=colleges, subjects=[subject_code])[subject_code].items():
         data["Courses"][course_number]["Offerings"] = course_offerings
     json.dump(data, open(make_path(subjects_dir, f"{subject_code}.json"), 'w'))
     

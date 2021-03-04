@@ -4,3 +4,9 @@ class UnsupportedBrowser(Exception):
 
 class NotASubjectFile(Exception):
     pass
+
+class InvalidSubject(Exception):
+    pass
+
+class NoColleges(Exception):
+    pass
