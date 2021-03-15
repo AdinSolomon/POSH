@@ -38,11 +38,12 @@ def update_navigation() -> None:
 
 def update_subject(subject_code:str) -> None:
     subject_colleges = json.load(open(make_path(navigation_dir, "subject_colleges.json")))
-    if not (colleges := subject_colleges.get([subject_code], None)):
+    colleges = None
+    if not (colleges := subject_colleges.get(subject_code, None)):
         raise InvalidSubject(f"The subject code {subject_code} was not found in subject_colleges.json")
     if not (colleges := colleges["TMS"]):
         raise NoColleges(f"The subject code {subject_code} has not TMS entry")
-    
+
     scraper = Scraper.Scraper()
     data = {
         "Subject Code" : subject_code,
