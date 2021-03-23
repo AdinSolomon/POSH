@@ -8,25 +8,27 @@ from functools import reduce
 #  TODO - add support for course requirements which can be taken concurrently
 class Requirement(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def is_satisfied(self, **kwargs) -> bool:
+    def __str__(self):
         pass
     @abc.abstractmethod
-    def __str__(self):
+    def is_satisfied(self, **kwargs) -> bool:
         pass
 
 class CourseRequirement(Requirement):
-    def __init__(self, subject:str, number:str):
+    def __init__(self, subject:str, number:str, can_be_taken_concurrently:bool = False):
         self.subject = subject
         self.number = number
+        self.can_be_taken_concurrently = can_be_taken_concurrently
     def __str__(self):
         return f"{self.subject} {self.number}"
     def is_satisfied(self, **kwargs) -> bool:
         return self.__str__() in kwargs["courses"]
 
 class MinGradeRequirement(CourseRequirement):
-    def __init__(self, subject:str, number:str, grade:str):
+    def __init__(self, subject:str, number:str, grade:str, can_be_taken_concurrently:bool = False):
         self.subject = subject
         self.number = number
+        self.can_be_taken_concurrently = can_be_taken_concurrently
         self.grade = grade
     def __str__(self):
         return f"{self.subject} {self.number} [Min Grade: {self.grade}]"
