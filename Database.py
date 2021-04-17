@@ -51,8 +51,13 @@ def update_subject(subject_code:str) -> None:
         "Last Updated" : datetime.datetime.now().strftime(datetime_format),
         "Courses" : scraper.scrapeCC(term_lengths=CC.TermLengths, degrees=CC.Degrees, subjects=[subject_code])[subject_code]
     }
-    for course_number, course_offerings in scraper.scrapeTMS(terms=TMS.Quarters, colleges=colleges, subjects=[subject_code])[subject_code].items():
-        data["Courses"][course_number]["Offerings"] = course_offerings
+    tms_data = scraper.scrapeTMS(terms=TMS.Quarters, colleges=colleges, subjects=[subject_code])
+    try:
+        for course_number, course_offerings in tms_data[subject_code].items():
+            data["Courses"][course_number]["Offerings"] = course_offerings
+    except KeyError as e:
+        json.dump(tms_data, open('tms_data_error.json', 'w'))
+        raise e
     json.dump(data, open(make_path(subjects_dir, f"{subject_code}.json"), 'w'))
     
 

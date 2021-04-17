@@ -3,9 +3,8 @@ import abc
 from functools import reduce
 
 # This class is all about requirements which can be filled according to some criteria
-# Those criteria may be other requirements organized in a tree-like structure
+# Those criteria may be other requirements organized in a tree structure
 
-#  TODO - add support for course requirements which can be taken concurrently
 class Requirement(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def __str__(self):

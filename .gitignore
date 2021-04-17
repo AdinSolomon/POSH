@@ -2,6 +2,7 @@
 # Dev ignores
 __pycache__/
 .vscode/
+.antlr/
 temp*
 
 # Don't upload your entire database please

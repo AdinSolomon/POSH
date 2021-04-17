@@ -1,6 +1,6 @@
 
 HomePage = "https://termmasterschedule.drexel.edu/webtms_du/app"
-xpath_to_course_table = "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[6]/td/table/tbody"
+xpath_to_course_table = "/html/body/table/tbody/tr[2]/td/table[2]/tbody/tr[8]/td/table/tbody"
 
 Seasons = ["Fall", "Winter", "Spring", "Summer"]
 CurrentYear = 21

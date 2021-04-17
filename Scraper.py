@@ -289,27 +289,36 @@ class Scraper:
             #   ex. { "150" : { "Section01" : {...} } }
             def _parse_course(lines:[str]) -> dict:
                 # returns a dictionary { "150"" : { "Section01" : {...} } }
-                course_number:str = (tr := lines[0].split())[1]
-                section_id:str = tr[-1]
+                tr = lines[0].split()
+                crn_index = None
+                for i in range(len(tr)):
+                    if len(tr[i]) == 5 and tr[i].isdigit():
+                        crn_index = i
+                course_number:str = tr[1]
+                section_id:str = tr[crn_index-1]
                 section_info:dict = {
-                    "Format/Style" : ' '.join(tr[2:-1]),
-                    "CRN"          : lines[1],
-                   #"Name"         : lines[2],
-                    "Schedule"     : " | ".join(lines[3:-1]),
+                    "Format/Style" : ' '.join(tr[2:crn_index-1]),
+                    "CRN"          : tr[crn_index],
+                   #"Name"         : tr[-1],
+                    "Schedule"     : " | ".join(lines[1:-1]),
                     "Professor"    : lines[-1]
                 }
                 return { course_number : { section_id : section_info} }
-            table_data = self.driver.find_element_by_xpath(TMS.xpath_to_course_table).text.split('\n')
-            assert (len(table_data) > 0), "Data was not scraped properly"
-            code = table_data[1].split()[0]
+            try:
+                table_data = self.driver.find_element_by_xpath(TMS.xpath_to_course_table).text.split('\n')
+            except Exception as e:
+                print(repr(e))
+                raise Exception("Ruh roh it looks like xpath_to_course_table is all wack")
+            code = table_data[0].split()[0]
             count = 0
             courses = {} # { "150" : { "Section01" : {...} } }
             current_section = []
             # TODO - make this into a cool generator function
-            for line in table_data[1:]: # The first line is the table header
-                if code in line and count > 3: # to allow for course title with the code in it
+            for line in table_data: # The first line is the table header (not anymore April 2nd 2021)
+                if line.split()[0] == code and count >= 3: # to allow for course title with the code in it
                     # A complete section has been collected
-                    dict_deepupdate(courses, _parse_course(current_section))
+                    new_course = _parse_course(current_section)
+                    dict_deepupdate(courses, new_course)
                     # Start loading another section
                     count = 1
                     current_section = [line]
@@ -328,7 +337,7 @@ class Scraper:
         #       For each major (click on link)
         #           scrape ya boi
         #           go back
-        #   go back
+        #   go back5
         # TODO - implement the no_arg default navigations
         data = {} # { "CS" : { "150": { "Fall Quarter 20-21" : { "Section01" : {...} } } } }
         failed_finds = {"origin":"scrapeTermMasterSchedule()"}

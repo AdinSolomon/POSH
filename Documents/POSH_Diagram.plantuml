@@ -1,0 +1,14 @@
+
+@startuml POSH_Deployment
+' Database Organization
+cloud TermMasterSchedule
+cloud CourseCatalog
+database LocalDatabase [
+    Local Database
+    ====
+    Course information is scraped
+    from TMS and CC and stored locally
+]
+LocalDatabase .. TermMasterSchedule
+LocalDatabase .. CourseCatalog
+@enduml
